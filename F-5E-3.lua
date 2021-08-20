@@ -1,6 +1,6 @@
 BIOS.protocol.beginModule("F-5E-3", 0x7600)
 BIOS.protocol.setExportModuleAircrafts({"F-5E-3"})
---by WarLord
+--by WarLord (aka BlackLibrary)
 
 local documentation = moduleBeingDefined.documentation
 
@@ -254,7 +254,7 @@ definePotentiometer("RADAR_BRIGHT", 17, 3008, 70, {0, 1}, "Radar", "AN/APQ-159 R
 definePotentiometer("RADAR_PERSIS", 17, 3009, 69, {0, 1}, "Radar", "AN/APQ-159 Radar Persistence Knob")
 definePotentiometer("RADAR_VIDEO", 17, 3010, 68, {0, 1}, "Radar", "AN/APQ-159 Radar Video Knob")
 definePotentiometer("RADAR_CURSOR", 17, 3011, 67, {0, 1}, "Radar", "AN/APQ-159 Radar Cursor Knob")
-definePotentiometer("RADAR_CURSOR", 17, 3012, 66, {-0.75,0.75}, "Radar", "AN/APQ-159 Radar Pitch Knob")
+definePotentiometer("RADAR_PITCH", 17, 3012, 66, {-0.75,0.75}, "Radar", "AN/APQ-159 Radar Pitch Knob")
 defineIndicatorLight("RADAR_SCALE_5", 155, "Warning, Caution and IndicatorLights","Radar Range Scale 5")
 defineIndicatorLight("RADAR_SCALE_10", 156, "Warning, Caution and IndicatorLights","Radar Range Scale 10")
 defineIndicatorLight("RADAR_SCALE_20", 157, "Warning, Caution and IndicatorLights","Radar Range Scale 20")
@@ -452,5 +452,19 @@ end, 1, "External Aircraft Model", "Strobe Lights")
 defineIntegerFromGetter("EXT_BRAKE_CUTE", function()
 	if LoGetAircraftDrawArgumentValue(35) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Brake Cute")
+
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
+defineFloat("SBY_COMPASS_HDG", 610, {-1, 1}, "Gauges", "Standby Compass Heading")
+defineFloat("SBY_COMPASS_PITCH", 611, {-1, 1}, "Gauges", "Standby Compass Pitch")
+defineFloat("SBY_COMPASS_BANK", 612, {-1, 1}, "Gauges", "Standby Compass Bank")
 
 BIOS.protocol.endModule()
